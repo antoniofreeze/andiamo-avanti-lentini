@@ -30,6 +30,32 @@ const CANDIDATES = [
   { order: 16, name: "VASTA GIUSEPPE", cv: "assets/docs/cv-andiamo-16.pdf", casellario: "assets/docs/casellario-andiamo-16.pdf" },
 ];
 
+
+// ---------- Program ----------
+const PROGRAM = [
+  "Ripristino della macchina amministrativa, bilanci sostenibili e uffici comunali più efficienti",
+  "Sicurezza urbana, videosorveglianza, legalità diffusa e controllo del territorio",
+  "Decoro urbano, raccolta differenziata, contrasto all'abbandono dei rifiuti e bonifica delle discariche",
+  "Manutenzione programmata di strade, marciapiedi, scuole, edifici pubblici e infrastrutture comunali",
+  "Sviluppo strategico legato agli assi Catania-Siracusa e Catania-Ragusa per attrarre imprese e investimenti",
+  "Bilancio comunale, fondi regionali, nazionali ed europei e valorizzazione del patrimonio pubblico",
+  "Politiche abitative, recupero degli immobili abbandonati, case a un euro e incentivi per famiglie e giovani coppie",
+  "Inclusione sociale, abbattimento delle barriere architettoniche e istituzione delle Consulte cittadine",
+  "Servizi essenziali più controllati: rifiuti, acqua, illuminazione pubblica, viabilità e segnalazioni dei cittadini",
+  "Sport, cultura, turismo sostenibile e valorizzazione dell'identità storica di Leontinoi e del Lago Biviere",
+];
+
+function renderProgram() {
+  const target = document.querySelector("[data-program-grid]");
+  if (!target) return;
+  target.innerHTML = PROGRAM.map((item, i) => `
+    <article class="program-item reveal">
+      <span>${String(i + 1).padStart(2, "0")}</span>
+      <p>${escapeHtml(item)}</p>
+    </article>
+  `).join("");
+}
+
 // ---------- Icons ----------
 const ICON_CV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
 const ICON_CERT = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`;
@@ -143,6 +169,7 @@ function setupCookieBanner() {
 // ---------- Init ----------
 document.addEventListener("DOMContentLoaded", () => {
   renderCandidates();
+  renderProgram();
   setupNavigation();
   setupHeader();
   setupCookieBanner();
